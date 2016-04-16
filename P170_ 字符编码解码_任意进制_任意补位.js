@@ -21,3 +21,24 @@ RawData.encode = function (str, prefix,suffix,base,filler,digits) {
 
 	return result;
 }
+
+RawData.decode = function (str, base, seperator, replacement) {
+
+	if (replacement) {
+
+		var re = new RegExp(replacement,'g');
+		str = str.replace(re,'');
+	}
+
+	var splitstr = str.split(seperator);
+	var result = "";
+
+	for (var i = 0; i < splitstr.length; i++) {
+		if (splitstr[i]) {
+			result += String.fromCharCode(parseInt(splitstr[i], base));
+		}
+	}
+
+	return result;
+
+}
